@@ -82,7 +82,7 @@ export default function Page() {
 
             <TabsContent value="Employer">
               <form className="space-y-4">
-                <div className="grid grid-cols-2 gap-1">
+                <div className="grid grid-cols-2 gap-2 space-y-2">
                   <div className="space-y-2">
                     <Label>Noms</Label>
                     <Input
@@ -105,10 +105,11 @@ export default function Page() {
                     <Label>Date de naissance</Label>
                     <Input className="rounded-sm" type="date" />
                   </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-1">
                   <div className="space-y-2">
+                    <Label>Adresse</Label>
+                    <Input className="rounded-sm" type="text" placeholder="123 Rue de la Paix" />
+                  </div>
+                   <div className="space-y-2">
                     <Label>Email</Label>
                     <Input
                       className="rounded-sm"
@@ -125,9 +126,6 @@ export default function Page() {
                       placeholder="+261383572066"
                     />
                   </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-1">
                   <div className="space-y-2">
                     <Label>Mot de passe</Label>
                     <Input
@@ -146,6 +144,8 @@ export default function Page() {
                     />
                   </div>
                 </div>
+
+               
 
                 <DragDrop label="CV (PDF ou DOC)" />
 
@@ -172,7 +172,7 @@ export default function Page() {
 
             <TabsContent value="Recruteur">
               <form className="space-y-4">
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid grid-cols-2 gap-2 space-y-2">
                   <div className="space-y-2">
                     <Label>Nom de la société</Label>
                     <Input
@@ -208,10 +208,7 @@ export default function Page() {
                       placeholder="101"
                     />
                   </div>
-                </div>
-
-               <div className="grid grid-cols-2 gap-2">
-                 <div className="space-y-2">
+                   <div className="space-y-2">
                   <Label>Email</Label>
                   <Input
                     className="rounded-sm"
@@ -228,10 +225,7 @@ export default function Page() {
                     placeholder="+261383572066"
                   />
                 </div>
-               </div>
-
-                <div className="grid grid-cols-2 gap-1">
-                  <div className="space-y-2">
+                 <div className="space-y-2">
                     <Label>Mot de passe</Label>
                     <Input
                       className="rounded-sm"
@@ -249,6 +243,7 @@ export default function Page() {
                     />
                   </div>
                 </div>
+
 
                 <DragDrop label="Logo de l'entreprise" />
 
