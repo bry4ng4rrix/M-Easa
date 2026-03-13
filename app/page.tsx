@@ -1,14 +1,15 @@
 "use client"
 import { Input } from "@/components/ui/input"
-import { Search } from "lucide-react"
-
-
+import { BadgeAlert, Search } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
+import Image from "next/image"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs"
+import { Card } from "@/components/ui/card"
 
 export default function Home() {
 
@@ -120,20 +121,31 @@ export default function Home() {
                 </TabsList>
                 <TabsContent value="Tous">
                   {/* liste complet  */}
-                  <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6'>
+                  <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mt-6'>
                     {asa.map((offre, index) => (
-                      <div key={index} className='bg-card border border-border rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow'>
-                        <h3 className='text-lg font-semibold text-foreground'>{offre.titre}</h3>
+                      <Card key={index} className='p-4 shadow-sm hover:shadow-md transition-shadow'>
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <h3 className='text-lg font-semibold text-foreground'>{offre.titre} </h3>
+                            
                         <p className='text-sm text-muted-foreground'>{offre.entreprise} - {offre.localisation}</p>
                         <p className='text-sm text-muted-foreground'>{offre.typeContrat} - {offre.salaire}</p>
+                        {offre.urgent && <Badge variant="destructive" className="text-xs">Urgent</Badge>}
+                          </div>
+                          <div>
+                            <img src={`https://picsum.photos/seed/${Math.random()}/400/300`} alt="a"
+                              className="w-24 h-24 rounded-full shadow-md object-cover"
+                            />
+                          </div>
+                        </div>
                         <p className='mt-2 text-sm text-muted-foreground'>{offre.description}</p>
                         <div className='mt-4 flex flex-wrap gap-2'>
                           {offre.competences.map((competence, idx) => (
-                            <span key={idx} className='text-xs bg-violet-100 text-violet-800 px-2 py-1 rounded-full'>{competence}</span>
+                            <Badge key={idx} className='text-xs bg-violet-100 text-violet-800 px-2 py-1 rounded-full'>{competence}</Badge>
                           ))}
                         </div>
                         <p className='mt-4 text-xs text-muted-foreground'>Publié le {new Date(offre.datePublication).toLocaleDateString()}</p>
-                      </div>
+                      </Card>
                     ))}
                   </div>
                 </TabsContent>
