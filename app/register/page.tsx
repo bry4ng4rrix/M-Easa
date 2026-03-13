@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/card"
 
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { Input  } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
 import {
@@ -44,9 +44,9 @@ function DragDrop({ label }: { label: string }) {
 
       <div
         {...getRootProps()}
-        className="border-2 border-dashed rounded-lg p-6 text-center cursor-pointer hover:bg-muted transition"
+        className="border-2 border-dashed border-violet-300 hover:border-violet-500 rounded-md p-6 text-center cursor-pointer hover:bg-muted transition-all duration-300"
       >
-        <input {...getInputProps()} />
+        <input className="rounded-sm" {...getInputProps()} />
 
         {isDragActive ? (
           <p>Déposez le fichier ici...</p>
@@ -103,51 +103,51 @@ export default function Page() {
 
               <form className="space-y-4">
 
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 gap-1">
 
                   <div className="space-y-2">
                     <Label>Noms</Label>
-                    <Input type="text" placeholder="Rakoto" />
+                    <Input className="rounded-sm" type="text" placeholder="Rakoto" />
                   </div>
 
                   <div className="space-y-2">
                     <Label>Prénoms</Label>
-                    <Input type="text" placeholder="Bryan" />
+                    <Input className="rounded-sm" type="text" placeholder="Bryan" />
                   </div>
 
                   <div className="space-y-2">
                     <Label>Date de naissance</Label>
-                    <Input type="date" />
+                    <Input className="rounded-sm" type="date" />
                   </div>
 
                 </div>
 
 
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 gap-1">
 
                   <div className="space-y-2">
                     <Label>Email</Label>
-                    <Input type="email" placeholder="email@example.com" />
+                    <Input className="rounded-sm" type="email" placeholder="email@example.com" />
                   </div>
 
                   <div className="space-y-2">
                     <Label>Contact</Label>
-                    <Input type="tel" placeholder="+261383572066" />
+                    <Input className="rounded-sm" type="tel" placeholder="+261383572066" />
                   </div>
 
                 </div>
 
 
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 gap-1">
 
                   <div className="space-y-2">
                     <Label>Mot de passe</Label>
-                    <Input type="password" placeholder="********" />
+                    <Input className="rounded-sm" type="password" placeholder="********" />
                   </div>
 
                   <div className="space-y-2">
                     <Label>Confirmer le mot de passe</Label>
-                    <Input type="password" placeholder="********" />
+                    <Input className="rounded-sm" type="password" placeholder="********" />
                   </div>
 
                 </div>
@@ -156,7 +156,7 @@ export default function Page() {
                 <DragDrop label="CV (PDF ou DOC)" />
 
 
-                <Button className="w-full bg-violet-700 hover:bg-violet-900 transition-all">
+                <Button className="rounded-sm w-full bg-violet-700 hover:bg-violet-900 transition-all duration-300">
                   Inscription
                 </Button>
 
@@ -191,26 +191,26 @@ export default function Page() {
 
               <form className="space-y-4">
 
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 gap-1">
 
                   <div className="space-y-2">
                     <Label>Nom de la société</Label>
-                    <Input type="text" placeholder="SpaceX" />
+                    <Input className="rounded-sm" type="text" placeholder="SpaceX" />
                   </div>
 
                   <div className="space-y-2">
                     <Label>Adresse</Label>
-                    <Input type="text" placeholder="Analakely" />
+                    <Input className="rounded-sm" type="text" placeholder="Analakely" />
                   </div>
 
                   <div className="space-y-2">
                     <Label>Ville</Label>
-                    <Input type="text" placeholder="Antananarivo" />
+                    <Input className="rounded-sm" type="text" placeholder="Antananarivo" />
                   </div>
 
                   <div className="space-y-2">
                     <Label>Code postal</Label>
-                    <Input type="number" placeholder="101" />
+                    <Input className="rounded-sm" type="number" placeholder="101" />
                   </div>
 
                 </div>
@@ -218,26 +218,26 @@ export default function Page() {
 
                 <div className="space-y-2">
                   <Label>Email</Label>
-                  <Input type="email" placeholder="email@example.com" />
+                  <Input className="rounded-sm" type="email" placeholder="email@example.com" />
                 </div>
 
 
                 <div className="space-y-2">
                   <Label>Contact</Label>
-                  <Input type="tel" placeholder="+261383572066" />
+                  <Input className="rounded-sm" type="tel" placeholder="+261383572066" />
                 </div>
 
 
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 gap-1">
 
                   <div className="space-y-2">
                     <Label>Mot de passe</Label>
-                    <Input type="password" placeholder="********" />
+                    <Input className="rounded-sm" type="password" placeholder="********" />
                   </div>
 
                   <div className="space-y-2">
                     <Label>Confirmer le mot de passe</Label>
-                    <Input type="password" placeholder="********" />
+                    <Input className="rounded-sm" type="password" placeholder="********" />
                   </div>
 
                 </div>
@@ -246,7 +246,7 @@ export default function Page() {
                 <DragDrop label="Logo de l'entreprise" />
 
 
-                <Button className="w-full bg-violet-700 hover:bg-violet-900 transition-all">
+                <Button className="w-full bg-violet-700 hover:bg-violet-900 transition-all duration-300">
                   Inscription
                 </Button>
 
