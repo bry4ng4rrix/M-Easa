@@ -24,9 +24,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-yellow-500`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-yellow-50`}
       >
         <Navbard/>
         {children}

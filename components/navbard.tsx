@@ -3,7 +3,7 @@ import React from 'react'
 const Navbard = () => {
   return (
     <div>
-      ss
+    
     </div>
   )
 }
