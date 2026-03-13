@@ -1,42 +1,36 @@
-"use client"
+"use client";
 
-import { useCallback, useState } from "react"
-import { useDropzone } from "react-dropzone"
+import { useCallback, useState } from "react";
+import { useDropzone } from "react-dropzone";
 
 import {
   CardContent,
   CardHeader,
   CardFooter,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 
-import { Button } from "@/components/ui/button"
-import { Input  } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/ui/tabs"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-import Link from "next/link"
-
+import Link from "next/link";
 
 function DragDrop({ label }: { label: string }) {
-  const [file, setFile] = useState<File | null>(null)
+  const [file, setFile] = useState<File | null>(null);
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     if (acceptedFiles.length > 0) {
-      setFile(acceptedFiles[0])
+      setFile(acceptedFiles[0]);
     }
-  }, [])
+  }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     multiple: false,
-  })
+  });
 
   return (
     <div className="space-y-2">
@@ -61,108 +55,105 @@ function DragDrop({ label }: { label: string }) {
         )}
       </div>
     </div>
-  )
+  );
 }
-
 
 export default function Page() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-muted/40 p-4">
-
       <div className="w-full max-w-lg rounded-md space-y-2 border border-slate-200 shadow-lg py-6 bg-white">
-
         <CardHeader className="text-center space-y-2">
-          <CardTitle className="text-2xl font-bold">
-            Bienvenue
-          </CardTitle>
+          <CardTitle className="text-2xl font-bold">Bienvenue</CardTitle>
 
           <p className="text-sm text-muted-foreground">
             Créez un compte pour commencer
           </p>
         </CardHeader>
 
-
         <CardContent className="space-y-4">
-
           <Tabs defaultValue="Employer" className="w-full items-center">
-
             <TabsList className="grid grid-cols-2 bg-violet-100">
-              <TabsTrigger value="Employer">
-                Employer
-              </TabsTrigger>
+              <TabsTrigger value="Employer">Employer</TabsTrigger>
 
-              <TabsTrigger value="Recruteur">
-                Recruteur
-              </TabsTrigger>
+              <TabsTrigger value="Recruteur">Recruteur</TabsTrigger>
             </TabsList>
-
 
             {/* EMPLOYER */}
 
             <TabsContent value="Employer">
-
               <form className="space-y-4">
-
                 <div className="grid grid-cols-2 gap-1">
-
                   <div className="space-y-2">
                     <Label>Noms</Label>
-                    <Input className="rounded-sm" type="text" placeholder="Rakoto" />
+                    <Input
+                      className="rounded-sm"
+                      type="text"
+                      placeholder="Rakoto"
+                    />
                   </div>
 
                   <div className="space-y-2">
                     <Label>Prénoms</Label>
-                    <Input className="rounded-sm" type="text" placeholder="Bryan" />
+                    <Input
+                      className="rounded-sm"
+                      type="text"
+                      placeholder="Bryan"
+                    />
                   </div>
 
                   <div className="space-y-2">
                     <Label>Date de naissance</Label>
                     <Input className="rounded-sm" type="date" />
                   </div>
-
                 </div>
 
-
                 <div className="grid grid-cols-2 gap-1">
-
                   <div className="space-y-2">
                     <Label>Email</Label>
-                    <Input className="rounded-sm" type="email" placeholder="email@example.com" />
+                    <Input
+                      className="rounded-sm"
+                      type="email"
+                      placeholder="email@example.com"
+                    />
                   </div>
 
                   <div className="space-y-2">
                     <Label>Contact</Label>
-                    <Input className="rounded-sm" type="tel" placeholder="+261383572066" />
+                    <Input
+                      className="rounded-sm"
+                      type="tel"
+                      placeholder="+261383572066"
+                    />
                   </div>
-
                 </div>
 
-
                 <div className="grid grid-cols-2 gap-1">
-
                   <div className="space-y-2">
                     <Label>Mot de passe</Label>
-                    <Input className="rounded-sm" type="password" placeholder="********" />
+                    <Input
+                      className="rounded-sm"
+                      type="password"
+                      placeholder="********"
+                    />
                   </div>
 
                   <div className="space-y-2">
                     <Label>Confirmer le mot de passe</Label>
-                    <Input className="rounded-sm" type="password" placeholder="********" />
+                    <Input
+                      className="rounded-sm"
+                      type="password"
+                      placeholder="********"
+                    />
                   </div>
-
                 </div>
 
-
                 <DragDrop label="CV (PDF ou DOC)" />
-
 
                 <Button className="rounded-sm w-full bg-violet-700 hover:bg-violet-900 transition-all duration-300">
                   Inscription
                 </Button>
 
-
                 <div className="flex justify-between text-sm">
-
                   <Link
                     href="#"
                     className="text-muted-foreground hover:underline"
@@ -170,89 +161,100 @@ export default function Page() {
                     Mot de passe oublié ?
                   </Link>
 
-                  <Link
-                    href="/login"
-                    className="hover:underline"
-                  >
+                  <Link href="/login" className="hover:underline">
                     Déjà un compte ?
                   </Link>
-
                 </div>
-
               </form>
-
             </TabsContent>
-
-
 
             {/* RECRUTEUR */}
 
             <TabsContent value="Recruteur">
-
               <form className="space-y-4">
-
                 <div className="grid grid-cols-2 gap-1">
-
                   <div className="space-y-2">
                     <Label>Nom de la société</Label>
-                    <Input className="rounded-sm" type="text" placeholder="SpaceX" />
+                    <Input
+                      className="rounded-sm"
+                      type="text"
+                      placeholder="SpaceX"
+                    />
                   </div>
 
                   <div className="space-y-2">
                     <Label>Adresse</Label>
-                    <Input className="rounded-sm" type="text" placeholder="Analakely" />
+                    <Input
+                      className="rounded-sm"
+                      type="text"
+                      placeholder="Analakely"
+                    />
                   </div>
 
                   <div className="space-y-2">
                     <Label>Ville</Label>
-                    <Input className="rounded-sm" type="text" placeholder="Antananarivo" />
+                    <Input
+                      className="rounded-sm"
+                      type="text"
+                      placeholder="Antananarivo"
+                    />
                   </div>
 
                   <div className="space-y-2">
                     <Label>Code postal</Label>
-                    <Input className="rounded-sm" type="number" placeholder="101" />
+                    <Input
+                      className="rounded-sm"
+                      type="number"
+                      placeholder="101"
+                    />
                   </div>
-
                 </div>
-
 
                 <div className="space-y-2">
                   <Label>Email</Label>
-                  <Input className="rounded-sm" type="email" placeholder="email@example.com" />
+                  <Input
+                    className="rounded-sm"
+                    type="email"
+                    placeholder="email@example.com"
+                  />
                 </div>
-
 
                 <div className="space-y-2">
                   <Label>Contact</Label>
-                  <Input className="rounded-sm" type="tel" placeholder="+261383572066" />
+                  <Input
+                    className="rounded-sm"
+                    type="tel"
+                    placeholder="+261383572066"
+                  />
                 </div>
 
-
                 <div className="grid grid-cols-2 gap-1">
-
                   <div className="space-y-2">
                     <Label>Mot de passe</Label>
-                    <Input className="rounded-sm" type="password" placeholder="********" />
+                    <Input
+                      className="rounded-sm"
+                      type="password"
+                      placeholder="********"
+                    />
                   </div>
 
                   <div className="space-y-2">
                     <Label>Confirmer le mot de passe</Label>
-                    <Input className="rounded-sm" type="password" placeholder="********" />
+                    <Input
+                      className="rounded-sm"
+                      type="password"
+                      placeholder="********"
+                    />
                   </div>
-
                 </div>
 
-
                 <DragDrop label="Logo de l'entreprise" />
-
 
                 <Button className="w-full bg-violet-700 hover:bg-violet-900 transition-all duration-300">
                   Inscription
                 </Button>
 
-
                 <div className="flex justify-between text-sm">
-
                   <Link
                     href="#"
                     className="text-muted-foreground hover:underline"
@@ -260,30 +262,19 @@ export default function Page() {
                     Mot de passe oublié ?
                   </Link>
 
-                  <Link
-                    href="/login"
-                    className="hover:underline"
-                  >
+                  <Link href="/login" className="hover:underline">
                     Déjà un compte ?
                   </Link>
-
                 </div>
-
               </form>
-
             </TabsContent>
-
           </Tabs>
-
         </CardContent>
-
 
         <CardFooter className="text-center text-xs text-muted-foreground border-t pt-4">
           M-Easa © 2026
         </CardFooter>
-
       </div>
-
     </div>
-  )
+  );
 }
