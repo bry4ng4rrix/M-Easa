@@ -172,7 +172,7 @@ export default function Page() {
 
             <TabsContent value="Recruteur">
               <form className="space-y-4">
-                <div className="grid grid-cols-2 gap-1">
+                <div className="grid grid-cols-2 gap-2">
                   <div className="space-y-2">
                     <Label>Nom de la société</Label>
                     <Input
@@ -210,7 +210,8 @@ export default function Page() {
                   </div>
                 </div>
 
-                <div className="space-y-2">
+               <div className="grid grid-cols-2 gap-2">
+                 <div className="space-y-2">
                   <Label>Email</Label>
                   <Input
                     className="rounded-sm"
@@ -227,6 +228,7 @@ export default function Page() {
                     placeholder="+261383572066"
                   />
                 </div>
+               </div>
 
                 <div className="grid grid-cols-2 gap-1">
                   <div className="space-y-2">
@@ -271,7 +273,7 @@ export default function Page() {
           </Tabs>
         </CardContent>
 
-        <CardFooter className="text-center text-xs text-muted-foreground border-t pt-4">
+        <CardFooter className="text-center text-xs text-muted-foreground border-t pt-4 border-slate-200">
           M-Easa © 2026
         </CardFooter>
       </div>
