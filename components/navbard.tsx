@@ -4,7 +4,7 @@ import { User2 , BriefcaseBusiness} from "lucide-react"
 
 const Navbard = () => {
   return (
-    <header className='container mx-auto p-4 items-center justify-between flex'>
+    <header className='container  mx-auto p-1 items-center justify-between flex  rounded-xl m-1 '>
         <Link href="/" className="flex items-center gap-2">
         <img
                           src={`https://picsum.photos/seed/${Math.random()}/400/300`}

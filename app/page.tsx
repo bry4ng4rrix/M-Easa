@@ -115,7 +115,7 @@ const [searchTerm, setSearchTerm] = useState("");
 
   return (
     <div className="min-h-screen py-8 container mx-auto ">
-      <header className="py-12 px-4 bg-violet-100 rounded-2xl" >
+      <header className="py-3 px-4 border border-dashed border-violet-200 rounded-2xl" >
         <div className="mx-auto ">
           <div className="mb-8">
             <h1 className="text-4xl font-serif font-bold text-foreground mb-2">
@@ -143,7 +143,7 @@ const [searchTerm, setSearchTerm] = useState("");
 
       <main>
         {/* Category Filter */}
-        <div className="px-4 my-6"> 
+        <div className="px-4 my-6 border border-dashed border-violet-200 rounded-lg py-4 "> 
           <h2 className="text-sm font-semibold text-foreground mb-4 ">
             Catégories
           </h2>
