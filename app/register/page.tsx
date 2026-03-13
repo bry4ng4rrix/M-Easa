@@ -84,7 +84,7 @@ export default function Page() {
 
         <CardContent className="space-y-4">
 
-          <Tabs defaultValue="Employer" className="w-full">
+          <Tabs defaultValue="Employer" className="w-full items-center">
 
             <TabsList className="grid grid-cols-2 bg-violet-100">
               <TabsTrigger value="Employer">
