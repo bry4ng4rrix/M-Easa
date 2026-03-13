@@ -1,15 +1,18 @@
-import { CardContent, CardHeader, CardFooter, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import Link from "next/link"
+import {
+  CardContent,
+  CardHeader,
+  CardFooter,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import Link from "next/link";
 
 const Page = () => {
   return (
     <div className="min-h-screen flex items-center justify-center  p-4">
-
       <div className="w-full max-w-md rounded-md space-y-2 border border-slate-200 shadow py-4">
-        
         <CardHeader className="text-center space-y-2">
           <CardTitle className="text-2xl font-bold">Bienvenue</CardTitle>
           <p className="text-sm text-muted-foreground">
@@ -19,7 +22,6 @@ const Page = () => {
 
         <CardContent>
           <form className="space-y-4">
-
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <Input id="email" type="email" placeholder="email@example.com" />
@@ -43,7 +45,6 @@ const Page = () => {
                 Créer un compte ?
               </Link>
             </div>
-
           </form>
 
           <div className="relative my-6">
@@ -60,16 +61,14 @@ const Page = () => {
           <Button variant="outline" className="w-full">
             Continuer avec Google
           </Button>
-
         </CardContent>
 
         <CardFooter className="text-center text-xs text-muted-foreground border-slate-200">
           M-Easa © 2026
         </CardFooter>
-
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;
