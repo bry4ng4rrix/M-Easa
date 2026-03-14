@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Upload, Save } from 'lucide-react';
 import { FieldGroup, FieldLabel } from '@/components/ui/field';
+import Image from 'next/image';
 
 export default function CompanyProfileTab() {
   const [companyData, setCompanyData] = useState({
@@ -59,12 +60,14 @@ export default function CompanyProfileTab() {
         </CardHeader>
         <CardContent>
           <div className="flex flex-col gap-6 md:flex-row md:items-center">
-            <div className="flex-shrink-0">
+            <div className="shrink-0">
               <div className="w-32 h-32 bg-secondary rounded-lg flex items-center justify-center border-2 border-border">
-                <img
+                <Image
                   src={companyData.logo}
                   alt="Logo"
                   className="w-full h-full object-cover rounded-lg"
+                  width={24}
+                  height={24}
                 />
               </div>
             </div>

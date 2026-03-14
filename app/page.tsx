@@ -5,6 +5,8 @@ import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/card";
+import ColorBends from "@/components/ColorBends";
+
 
 export default function HomePage() {
   const jobListings = [
@@ -102,8 +104,12 @@ export default function HomePage() {
   });
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-12">
+    
+        
+
+    <div className="min-h-screen  w-full">
+   
+      <div className="container mx-auto px-4 py-12 absolute top-10 left-0 right-0">
         {/* Hero Section */}
         <div className="mb-12">
           <h1 className="text-5xl font-bold text-foreground mb-3 text-balance">
@@ -234,5 +240,6 @@ export default function HomePage() {
         </div>
       </div>
     </div>
+    
   );
 }

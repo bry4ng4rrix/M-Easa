@@ -17,6 +17,68 @@ import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import Link from "next/link";
+import { supabase } from "@/lib/supabase";
+
+export async function registerEmployer(data:any, file:File){
+
+  const {data:user,error} = await supabase.auth.signUp({
+    email:data.email,
+    password:data.password
+  })
+
+  if(error) return {error}
+
+  const userId = user.user?.id
+
+  // upload CV
+  const {data:fileData} = await supabase.storage
+  .from("cv")
+  .upload(`${userId}/${file.name}`, file)
+
+  const cvUrl = fileData?.path
+
+  await supabase.from("employers").insert({
+    id:userId,
+    nom:data.nom,
+    prenoms:data.prenoms,
+    date_naissance:data.date_naissance,
+    adresse:data.adresse,
+    email:data.email,
+    contact:data.contact,
+    cv_url:cvUrl
+  })
+
+}
+
+export async function registerRecruteur(data:any,file:File){
+
+  const {data:user,error} = await supabase.auth.signUp({
+    email:data.email,
+    password:data.password
+  })
+
+  if(error) return {error}
+
+  const userId = user.user?.id
+
+  const {data:fileData} = await supabase.storage
+  .from("logos")
+  .upload(`${userId}/${file.name}`,file)
+
+  const logoUrl = fileData?.path
+
+  await supabase.from("recruteurs").insert({
+    id:userId,
+    nom_societe:data.nom_societe,
+    adresse:data.adresse,
+    ville:data.ville,
+    code_postal:data.code_postal,
+    email:data.email,
+    contact:data.contact,
+    logo_url:logoUrl
+  })
+
+}
 
 function DragDrop({ label }: { label: string }) {
   const [file, setFile] = useState<File | null>(null);

@@ -2,20 +2,7 @@
 
 import { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { Badge } from '@/components/ui/badge';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import { Upload, Mail, Phone, MapPin, Building2, Key, Trash2, Edit2, MessageSquare, Clock, DollarSign, Briefcase } from 'lucide-react';
+import { Building2,MessageSquare, DollarSign, Briefcase } from 'lucide-react';
 import CompanyProfileTab from '@/components/recruiter/company-profile-tab';
 import PublishOfferTab from '@/components/recruiter/publish-offer-tab';
 import ManageOffersTab from '@/components/recruiter/manage-offers-tab';

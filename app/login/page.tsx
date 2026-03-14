@@ -11,8 +11,9 @@ import Link from "next/link";
 
 const Page = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center  p-4">
-      <div className="w-full max-w-md rounded-md space-y-2 border border-slate-200 shadow py-4">
+    <div className="min-h-screen flex items-center justify-center  p-4 ">
+         
+      <div className="w-full max-w-md rounded-md space-y-2 border border-slate-200 shadow py-4 ">
         <CardHeader className="text-center space-y-2">
           <CardTitle className="text-2xl font-bold">Bienvenue</CardTitle>
           <p className="text-sm text-muted-foreground">
