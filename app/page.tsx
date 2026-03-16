@@ -3,11 +3,10 @@ import { Input } from "@/components/ui/input";
 import { Navigation, Search } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/card";
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger, } from "@/components/ui/dialog"
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {Card,CardHeader,CardContent,CardFooter,} from "@/components/ui/card";
+import {Dialog,DialogClose,DialogContent,DialogDescription,DialogFooter,DialogHeader,DialogTitle,DialogTrigger,} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-
 
 export default function HomePage() {
   const jobListings = [
@@ -21,7 +20,7 @@ export default function HomePage() {
       description:
         "Nous recherchons un développeur frontend passionné pour rejoindre notre équipe dynamique. Vous travaillerez sur des projets innovants et aurez l'opportunité de faire évoluer votre carrière dans un environnement stimulant.",
       competences: ["React", "Next.js", "TypeScript", "CSS"],
-      profile: 'bachelor en informatique ',
+      profile: "bachelor en informatique ",
       datePublication: "2024-06-01",
       datefin: "2024-07-01",
       urgent: true,
@@ -63,7 +62,12 @@ export default function HomePage() {
       salaire: "500 000 MGA",
       description:
         "MarketPro offre une opportunité de stage en marketing digital pour les étudiants passionnés par le marketing en ligne. Vous apprendrez les bases du marketing digital et participerez à des projets réels.",
-      competences: ["SEO", "Content Marketing", "Social Media", "Google Analytics"],
+      competences: [
+        "SEO",
+        "Content Marketing",
+        "Social Media",
+        "Google Analytics",
+      ],
       datePublication: "2024-06-15",
       datefin: "2024-07-01",
       urgent: true,
@@ -77,7 +81,12 @@ export default function HomePage() {
       salaire: "3 000 000 MGA",
       description:
         "MobileTech recherche un développeur mobile urgent pour renforcer notre équipe de développement. Vous travaillerez sur des applications mobiles innovantes et aurez l'opportunité de faire évoluer votre carrière dans un environnement dynamique.",
-      competences: ["React Native", "Flutter", "iOS Development", "Android Development"],
+      competences: [
+        "React Native",
+        "Flutter",
+        "iOS Development",
+        "Android Development",
+      ],
       datePublication: "2024-06-20",
       datefin: "2024-07-01",
       urgent: false,
@@ -88,21 +97,22 @@ export default function HomePage() {
     Prenom: "Faharoa",
     Email: "bryanmfb4@gmail.com",
     tel: "+261383572066",
-    CV: ""
-  }
+    CV: "",
+  };
 
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("Tous");
   const [selectedJob, setSelectedJob] = useState<any>(null);
   const [showPostulationModal, setShowPostulationModal] = useState(false);
-  const [selectedJobForPostulation, setSelectedJobForPostulation] = useState<any>(null);
+  const [selectedJobForPostulation, setSelectedJobForPostulation] =
+    useState<any>(null);
 
   const filteredJobs = jobListings.filter((job) => {
     const matchesSearch =
       job.titre.toLowerCase().includes(searchTerm.toLowerCase()) ||
       job.entreprise.toLowerCase().includes(searchTerm.toLowerCase()) ||
       job.competences.some((c) =>
-        c.toLowerCase().includes(searchTerm.toLowerCase())
+        c.toLowerCase().includes(searchTerm.toLowerCase()),
       );
 
     const matchesCategory =
@@ -116,11 +126,7 @@ export default function HomePage() {
   });
 
   return (
-
-
-
     <div className="min-h-screen  w-full">
-
       <div className="container mx-auto px-4 py-12 absolute top-10 left-0 right-0">
         {/* Hero Section */}
         <div className="mb-12">
@@ -134,7 +140,10 @@ export default function HomePage() {
           {/* Search Bar */}
           <div className="flex flex-col sm:flex-row gap-3 mb-8">
             <div className="flex-1 flex items-center gap-3 bg-card border border-border rounded-lg px-4 py-3 shadow-sm hover:shadow-md transition-shadow">
-              <Search size={20} className="text-muted-foreground flex-shrink-0" />
+              <Search
+                size={20}
+                className="text-muted-foreground flex-shrink-0"
+              />
               <Input
                 placeholder="Rechercher par poste, entreprise ou compétence..."
                 className="border-0 bg-transparent focus-visible:ring-0 text-foreground placeholder:text-muted-foreground"
@@ -170,14 +179,18 @@ export default function HomePage() {
         <div>
           <div className="mb-6">
             <p className="text-sm text-muted-foreground">
-              {filteredJobs.length} offre{filteredJobs.length !== 1 ? "s" : ""} d'emploi trouvée{filteredJobs.length !== 1 ? "s" : ""}
+              {filteredJobs.length} offre{filteredJobs.length !== 1 ? "s" : ""}{" "}
+              d'emploi trouvée{filteredJobs.length !== 1 ? "s" : ""}
             </p>
           </div>
 
           {filteredJobs.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
               {filteredJobs.map((job) => (
-                <Card key={job.id} className="flex flex-col shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden ">
+                <Card
+                  key={job.id}
+                  className="flex flex-col shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden "
+                >
                   <CardHeader className="pb-4">
                     <div className="flex gap-4 items-start">
                       <div className="flex-1">
@@ -215,7 +228,8 @@ export default function HomePage() {
                   <CardContent className="flex-1 pb-4">
                     {/* description  */}
                     <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                      {job.description.split(' ').slice(0, 20).join(' ')}{job.description.split(' ').length > 20 ? '  .... ' : ''}
+                      {job.description.split(" ").slice(0, 20).join(" ")}
+                      {job.description.split(" ").length > 20 ? "  .... " : ""}
                     </p>
                     <div className="flex justify-between items-center">
                       <div className="flex flex-wrap justify gap-2">
@@ -227,21 +241,26 @@ export default function HomePage() {
                           >
                             {competence}
                           </Badge>
-
                         ))}
                       </div>
-                      <Dialog open={selectedJob?.id === job.id} onOpenChange={(open) => !open && setSelectedJob(null)}>
+                      <Dialog
+                        open={selectedJob?.id === job.id}
+                        onOpenChange={(open) => !open && setSelectedJob(null)}
+                      >
                         <DialogTrigger asChild>
                           <Button
                             size="lg"
                             onClick={() => setSelectedJob(job)}
-                            className="items-center justify-center hover:scale-105 translation-all duration-105 hover:bg-violet-900 hover:shadow-2xl">
+                            className="items-center justify-center hover:scale-105 translation-all duration-105 hover:bg-violet-900 hover:shadow-2xl"
+                          >
                             Voir détails <Navigation size={24} />
                           </Button>
                         </DialogTrigger>
                         <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
                           <DialogHeader>
-                            <DialogTitle className="text-xl">{job.titre}</DialogTitle>
+                            <DialogTitle className="text-xl">
+                              {job.titre}
+                            </DialogTitle>
                             <DialogDescription>
                               {job.entreprise} - {job.localisation}
                             </DialogDescription>
@@ -250,21 +269,30 @@ export default function HomePage() {
                             <div className="flex gap-2 flex-wrap">
                               <Badge variant="outline">{job.typeContrat}</Badge>
                               <Badge variant="outline">{job.salaire}</Badge>
-                              {job.urgent && <Badge variant="destructive">Urgent</Badge>}
+                              {job.urgent && (
+                                <Badge variant="destructive">Urgent</Badge>
+                              )}
                             </div>
 
                             <div>
-                              <h4 className="font-semibold mb-2">Description</h4>
+                              <h4 className="font-semibold mb-2">
+                                Description
+                              </h4>
                               <p className="text-sm text-muted-foreground leading-relaxed">
                                 {job.description}
                               </p>
                             </div>
 
                             <div>
-                              <h4 className="font-semibold mb-2">Compétences requises</h4>
+                              <h4 className="font-semibold mb-2">
+                                Compétences requises
+                              </h4>
                               <div className="flex flex-wrap gap-2">
                                 {job.competences.map((competence, idx) => (
-                                  <Badge key={idx} className="text-xs bg-primary/10 text-primary">
+                                  <Badge
+                                    key={idx}
+                                    className="text-xs bg-primary/10 text-primary"
+                                  >
                                     {competence}
                                   </Badge>
                                 ))}
@@ -273,22 +301,35 @@ export default function HomePage() {
 
                             <div className="grid grid-cols-2 gap-4 text-sm">
                               <div>
-                                <span className="font-medium">Date de publication:</span>
+                                <span className="font-medium">
+                                  Date de publication:
+                                </span>
                                 <p className="text-muted-foreground">
-                                  {new Date(job.datePublication).toLocaleDateString("fr-FR")}
+                                  {new Date(
+                                    job.datePublication,
+                                  ).toLocaleDateString("fr-FR")}
                                 </p>
                               </div>
                               <div>
-                                <span className="font-medium">Date limite:</span>
+                                <span className="font-medium">
+                                  Date limite:
+                                </span>
                                 <p className="text-muted-foreground">
-                                  {new Date(job.datefin).toLocaleDateString("fr-FR")}
+                                  {new Date(job.datefin).toLocaleDateString(
+                                    "fr-FR",
+                                  )}
                                 </p>
                               </div>
                             </div>
                           </div>
                           <DialogFooter>
                             <DialogClose asChild>
-                              <Button variant="outline" className="border-red-500 text-red-700 hover:scale-105 translation-all duration-300">Fermer</Button>
+                              <Button
+                                variant="outline"
+                                className="border-red-500 text-red-700 hover:scale-105 translation-all duration-300"
+                              >
+                                Fermer
+                              </Button>
                             </DialogClose>
                             {/* postulations  */}
                             <Button
@@ -308,7 +349,10 @@ export default function HomePage() {
 
                   <CardFooter className="border-t border-border pt-4 flex justify-between text-xs text-muted-foreground">
                     <p>
-                      Publié le {new Date(job.datePublication).toLocaleDateString("fr-FR")}
+                      Publié le{" "}
+                      {new Date(job.datePublication).toLocaleDateString(
+                        "fr-FR",
+                      )}
                     </p>
                     <p>
                       Fin: {new Date(job.datefin).toLocaleDateString("fr-FR")}
@@ -331,12 +375,16 @@ export default function HomePage() {
       </div>
 
       {/* Postulation Modal */}
-      <Dialog open={showPostulationModal} onOpenChange={setShowPostulationModal}>
+      <Dialog
+        open={showPostulationModal}
+        onOpenChange={setShowPostulationModal}
+      >
         <DialogContent className="max-w-md">
           <DialogHeader>
             <DialogTitle>Postuler à l'offre</DialogTitle>
             <DialogDescription>
-              {selectedJobForPostulation?.titre} - {selectedJobForPostulation?.entreprise}
+              {selectedJobForPostulation?.titre} -{" "}
+              {selectedJobForPostulation?.entreprise}
             </DialogDescription>
           </DialogHeader>
 
@@ -371,12 +419,11 @@ export default function HomePage() {
                   className="w-full justify-start"
                   disabled={!Profile.CV}
                 >
-                  {Profile.CV ? "Utiliser CV enregistré" : "Aucun CV enregistré"}
+                  {Profile.CV
+                    ? "Utiliser CV enregistré"
+                    : "Aucun CV enregistré"}
                 </Button>
-                <Button
-                  variant="outline"
-                  className="w-full justify-start"
-                >
+                <Button variant="outline" className="w-full justify-start">
                   <input
                     type="file"
                     accept=".pdf,.doc,.docx"
@@ -402,6 +449,5 @@ export default function HomePage() {
         </DialogContent>
       </Dialog>
     </div>
-
   );
 }
