@@ -1,11 +1,12 @@
 "use client";
 import { Input } from "@/components/ui/input";
-import { Search } from "lucide-react";
+import { Navigation, Search } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/card";
-import ColorBends from "@/components/ColorBends";
+import {Dialog,DialogClose,DialogContent,DialogDescription,DialogFooter,DialogHeader,DialogTitle,DialogTrigger,} from "@/components/ui/dialog"
+import { Button } from "@/components/ui/button";
 
 
 export default function HomePage() {
@@ -165,7 +166,7 @@ export default function HomePage() {
           {filteredJobs.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredJobs.map((job) => (
-                <Card key={job.id} className="flex flex-col shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden hover:scale-105 ">
+                <Card key={job.id} className="flex flex-col shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden ">
                   <CardHeader className="pb-4">
                     <div className="flex gap-4 items-start">
                       <div className="flex-1">
@@ -204,15 +205,22 @@ export default function HomePage() {
                     <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                       {job.description}
                     </p>
-                    <div className="flex flex-wrap gap-2">
-                      {job.competences.map((competence, idx) => (
+                    <div className="flex justify-between items-center">
+                     <div className="flex flex-wrap justify gap-2"> 
+                       {job.competences.map((competence, idx) => (
                         <Badge
                           key={idx}
                           className="text-xs bg-primary/10 text-primary"
                         >
                           {competence}
                         </Badge>
+                        
                       ))}
+                     </div>
+                     {/* ouvrire dialog  */}
+                      <Button
+                        size="lg" 
+                        className="items-center justify-center hover:scale-105 translation-all duration-105 hover:bg-violet-900 hover:shadow-2xl">Postuler <Navigation size={24} /></Button>
                     </div>
                   </CardContent>
 
