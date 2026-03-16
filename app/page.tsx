@@ -21,6 +21,7 @@ export default function HomePage() {
       description:
         "Nous recherchons un développeur frontend passionné pour rejoindre notre équipe dynamique. Vous travaillerez sur des projets innovants et aurez l'opportunité de faire évoluer votre carrière dans un environnement stimulant.",
       competences: ["React", "Next.js", "TypeScript", "CSS"],
+      profile : 'bachelor en informatique ',
       datePublication: "2024-06-01",
       datefin: "2024-07-01",
       urgent: true,
@@ -82,9 +83,19 @@ export default function HomePage() {
       urgent: false,
     },
   ];
+  const Profile = {
+    Nom: "andrana",
+    Prenom: "Faharoa",
+    Email : "bryanmfb4@gmail.com",
+    tel : "+261383572066",
+    CV : ""
+  }
 
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("Tous");
+  const [selectedJob, setSelectedJob] = useState<any>(null);
+  const [showPostulationModal, setShowPostulationModal] = useState(false);
+  const [selectedJobForPostulation, setSelectedJobForPostulation] = useState<any>(null);
 
   const filteredJobs = jobListings.filter((job) => {
     const matchesSearch =
@@ -164,7 +175,7 @@ export default function HomePage() {
           </div>
 
           {filteredJobs.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
               {filteredJobs.map((job) => (
                 <Card key={job.id} className="flex flex-col shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden ">
                   <CardHeader className="pb-4">
@@ -202,25 +213,96 @@ export default function HomePage() {
                   </CardHeader>
 
                   <CardContent className="flex-1 pb-4">
+                    {/* description  */}
                     <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                      {job.description}
+                      {job.description.split(' ').slice(0, 20).join(' ')}{job.description.split(' ').length > 20 ? '  .... ' : ''}
                     </p>
                     <div className="flex justify-between items-center">
                      <div className="flex flex-wrap justify gap-2"> 
                        {job.competences.map((competence, idx) => (
                         <Badge
                           key={idx}
-                          className="text-xs bg-primary/10 text-primary"
+                          variant="outline"
+                          className="text-xs border-amber-300 bg-amber-100/50 text-gray-700"
                         >
                           {competence}
                         </Badge>
                         
                       ))}
                      </div>
-                     {/* ouvrire dialog  */}
-                      <Button
-                        size="lg" 
-                        className="items-center justify-center hover:scale-105 translation-all duration-105 hover:bg-violet-900 hover:shadow-2xl">Postuler <Navigation size={24} /></Button>
+                     <Dialog open={selectedJob?.id === job.id} onOpenChange={(open) => !open && setSelectedJob(null)}>
+                      <DialogTrigger asChild>
+                        <Button
+                          size="lg" 
+                          onClick={() => setSelectedJob(job)}
+                          className="items-center justify-center hover:scale-105 translation-all duration-105 hover:bg-violet-900 hover:shadow-2xl">
+                          Voir détails <Navigation size={24} />
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+                        <DialogHeader>
+                          <DialogTitle className="text-xl">{job.titre}</DialogTitle>
+                          <DialogDescription>
+                            {job.entreprise} - {job.localisation}
+                          </DialogDescription>
+                        </DialogHeader>
+                        <div className="space-y-6">
+                          <div className="flex gap-2 flex-wrap">
+                            <Badge variant="outline">{job.typeContrat}</Badge>
+                            <Badge variant="outline">{job.salaire}</Badge>
+                            {job.urgent && <Badge variant="destructive">Urgent</Badge>}
+                          </div>
+                          
+                          <div>
+                            <h4 className="font-semibold mb-2">Description</h4>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
+                              {job.description}
+                            </p>
+                          </div>
+                          
+                          <div>
+                            <h4 className="font-semibold mb-2">Compétences requises</h4>
+                            <div className="flex flex-wrap gap-2">
+                              {job.competences.map((competence, idx) => (
+                                <Badge key={idx} className="text-xs bg-primary/10 text-primary">
+                                  {competence}
+                                </Badge>
+                              ))}
+                            </div>
+                          </div>
+                          
+                          <div className="grid grid-cols-2 gap-4 text-sm">
+                            <div>
+                              <span className="font-medium">Date de publication:</span>
+                              <p className="text-muted-foreground">
+                                {new Date(job.datePublication).toLocaleDateString("fr-FR")}
+                              </p>
+                            </div>
+                            <div>
+                              <span className="font-medium">Date limite:</span>
+                              <p className="text-muted-foreground">
+                                {new Date(job.datefin).toLocaleDateString("fr-FR")}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <DialogFooter>
+                          <DialogClose asChild>
+                            <Button variant="outline" className="border-red-500 text-red-700 hover:scale-105 translation-all duration-300">Fermer</Button>
+                          </DialogClose>
+                          {/* postulations  */}
+                          <Button 
+                            className="bg-violet-700 hover:bg-violet-900 hover:scale-105 translation-all duration-300"
+                            onClick={() => {
+                              setSelectedJobForPostulation(job);
+                              setShowPostulationModal(true);
+                            }}
+                          >
+                            Postuler maintenant
+                          </Button>
+                        </DialogFooter>
+                      </DialogContent>
+                    </Dialog>
                     </div>
                   </CardContent>
 
@@ -247,6 +329,78 @@ export default function HomePage() {
           )}
         </div>
       </div>
+      
+      {/* Postulation Modal */}
+      <Dialog open={showPostulationModal} onOpenChange={setShowPostulationModal}>
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <DialogTitle>Postuler à l'offre</DialogTitle>
+            <DialogDescription>
+              {selectedJobForPostulation?.titre} - {selectedJobForPostulation?.entreprise}
+            </DialogDescription>
+          </DialogHeader>
+          
+          <div className="space-y-4">
+            <div className="bg-gray-50 p-4 rounded-lg">
+              <h4 className="font-semibold mb-3">Votre Profil</h4>
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between">
+                  <span className="font-medium">Nom:</span>
+                  <span>{Profile.Nom}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="font-medium">Prénom:</span>
+                  <span>{Profile.Prenom}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="font-medium">Email:</span>
+                  <span>{Profile.Email}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="font-medium">Téléphone:</span>
+                  <span>{Profile.tel}</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="space-y-3">
+              <h4 className="font-semibold">CV</h4>
+              <div className="space-y-2">
+                <Button 
+                  variant="outline" 
+                  className="w-full justify-start"
+                  disabled={!Profile.CV}
+                >
+                  {Profile.CV ? "Utiliser CV enregistré" : "Aucun CV enregistré"}
+                </Button>
+                <Button 
+                  variant="outline" 
+                  className="w-full justify-start"
+                >
+                  <input 
+                    type="file" 
+                    accept=".pdf,.doc,.docx" 
+                    className="hidden" 
+                    id="cv-upload"
+                  />
+                  <label htmlFor="cv-upload" className="cursor-pointer w-full">
+                    Uploader un nouveau CV
+                  </label>
+                </Button>
+              </div>
+            </div>
+          </div>
+          
+          <DialogFooter>
+            <DialogClose asChild>
+              <Button variant="outline">Annuler</Button>
+            </DialogClose>
+            <Button className="bg-violet-700 hover:bg-violet-900">
+              Confirmer la postulation
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
     
   );
