@@ -165,7 +165,7 @@ export default function HomePage() {
           {filteredJobs.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredJobs.map((job) => (
-                <Card key={job.id} className="flex flex-col shadow-sm hover:shadow-lg transition-shadow overflow-hidden">
+                <Card key={job.id} className="flex flex-col shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden hover:scale-105 ">
                   <CardHeader className="pb-4">
                     <div className="flex gap-4 items-start">
                       <div className="flex-1">
