@@ -147,15 +147,7 @@ export default function PublishOfferTab() {
 
           {/* Row 3: Dates */}
           <div className="grid gap-6 md:grid-cols-2">
-            <FieldGroup>
-              <FieldLabel htmlFor="datePublication">Date de Publication</FieldLabel>
-              <Input
-                id="datePublication"
-                type="date"
-                value={formData.datePublication}
-                disabled
-              />
-            </FieldGroup>
+            
 
             <FieldGroup>
               <FieldLabel htmlFor="datefin">Date de Fin de Publication *</FieldLabel>
@@ -203,7 +195,7 @@ export default function PublishOfferTab() {
             {formData.competences.length > 0 && (
               <div className="flex flex-wrap gap-2">
                 {formData.competences.map(skill => (
-                  <Badge key={skill} variant="secondary" className="gap-2">
+                  <Badge key={skill}  variant="outline" className="gap-2 border-primary shadow-lg hover:bg-red-400 hover:scale-110 translation-all duration-300 hover:text-background hover:border-red-500">
                     {skill}
                     <button
                       onClick={() => removeSkill(skill)}
@@ -233,7 +225,7 @@ export default function PublishOfferTab() {
 
           {/* Publish Button */}
           <div className="pt-4 border-t border-border">
-            <Button onClick={handlePublish} className="w-full md:w-auto">
+            <Button onClick={handlePublish} className="w-full md:w-auto hover:scale-105 transition-transform duration-300 hover:bg-violet-900 hover:shadow-xl">
               Publier l'Offre
             </Button>
           </div>
