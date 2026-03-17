@@ -241,6 +241,7 @@ export default function HomePage() {
                           >
                             {competence}
                           </Badge>
+                          // comantera
                         ))}
                       </div>
                       <Dialog
